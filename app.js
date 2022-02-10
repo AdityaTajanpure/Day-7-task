@@ -9,13 +9,15 @@ let getRestCountries = async () => {
 }
 
 let filterByRegion = (json) => {
-    //Filter to get all countries where region is Asia  
+    //Filter to get all countries where region is Asia 
+    console.log("Filter to get all countries where region is Asia");
     let countries = json.filter((e) => e['region'] === 'Asia').map((country) => country['name'])
     console.log(countries)
 }
 
 let filterByPopulation = (json) => {
     //Filter to get all countries where population is less than 2 lakh
+    console.log("Filter to get all countries where population is less than 2 lakh");
     let countries = json.filter((e) => e['population'] < 200000).map((country) => {
         return {
             'name': country['name'],
@@ -27,13 +29,15 @@ let filterByPopulation = (json) => {
 
 let printOutDetails = (json) => {
     // Console logging details of all countries 
-    json.forEach((country) => {
-        console.log({
+    console.log("Console logging details of all countries");
+    let arr = json.map((country) => {
+        return {
             'name': country['name'],
             'capital': country['capital'],
             'flag': country['flag'],
-        })
+        }
     })
+    console.log(arr);
 }
 
 let getTotalPopulation = (json) => {
@@ -42,6 +46,7 @@ let getTotalPopulation = (json) => {
 }
 
 let countriesThatUsesDollars = (json) => {
+    console.log("Countries that use dollars as their currency");
     let arr = []
     json.forEach(country => {
         if (country['currencies'] !== undefined) {
